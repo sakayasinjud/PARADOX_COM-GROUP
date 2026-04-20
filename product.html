@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="th">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Product Detail</title>
+3
+<link rel="stylesheet" href="style.css">
+
+<style>
+
+/* =========================
+   ปุ่มกลับ
+========================= */
+
+.back-btn{
+
+margin-bottom:15px;
+padding:8px 14px;
+
+background:#eee;
+border:1px solid #ccc;
+
+cursor:pointer;
+border-radius:6px;
+
+}
+
+.back-btn:hover{
+
+background:#ddd;
+
+}
+
+
+/* =========================
+   Responsive Product Page
+========================= */
+
+.product-page{
+
+display:flex;
+gap:40px;
+
+padding:30px;
+
+background:white;
+
+flex-wrap:wrap;
+
+}
+
+/* ฝั่งรูป */
+
+.product-images{
+
+flex:1;
+min-width:280px;
+
+}
+
+/* รูปหลัก */
+
+.main-image{
+
+width:100%;
+max-height:400px;
+
+object-fit:contain;
+
+background:#eee;
+
+border-radius:10px;
+
+}
+
+/* Thumbnail */
+
+.thumbnail-row{
+
+display:flex;
+
+gap:10px;
+
+margin-top:15px;
+
+flex-wrap:wrap;
+
+}
+
+.thumbnail-row img{
+
+width:70px;
+height:70px;
+
+object-fit:contain;
+
+cursor:pointer;
+
+border:1px solid #ddd;
+
+border-radius:6px;
+
+}
+
+.thumbnail-row img:hover{
+
+border:2px solid orange;
+
+}
+
+/* ฝั่งข้อมูล */
+
+.product-info{
+
+flex:1;
+min-width:280px;
+
+}
+
+/* =========================
+   คำอธิบายสินค้า
+========================= */
+
+.product-description{
+
+margin-top:10px;
+
+color:#555;
+
+line-height:1.6;
+
+font-size:15px;
+
+}
+
+/* =========================
+   Tablet
+========================= */
+
+@media (max-width:900px){
+
+.product-page{
+
+flex-direction:column;
+
+padding:20px;
+
+}
+
+.main-image{
+
+max-height:300px;
+
+}
+
+}
+
+
+/* =========================
+   Mobile
+========================= */
+
+@media (max-width:600px){
+
+.product-page{
+
+padding:15px;
+
+}
+
+.product-title{
+
+font-size:20px;
+
+}
+
+.price{
+
+font-size:22px;
+
+}
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="topbar">
+From Gadgets to Enterprise - ร้านขายคอมครบวงจร
+</div>
+
+<!-- NAVBAR -->
+
+<div class="navbar">
+
+<h2 class="logo"> PARADOX_COM GROUP</h2>
+
+<input class="search" placeholder="ค้นหาสินค้า...">
+
+<div>
+<a href="index.html">🏠</a>
+<a href="cart.html">🛒</a>
+</div>
+
+</div>
+
+<!-- PRODUCT DETAIL -->
+
+<div class="product-page">
+
+<!-- รูปสินค้า -->
+
+<div class="product-images">
+
+<img 
+id="mainImage"
+src=""
+class="main-image"
+>
+
+<div 
+class="thumbnail-row"
+id="thumbnailRow">
+
+</div>
+
+</div>
+
+<!-- รายละเอียด -->
+
+<div class="product-info">
+
+<button 
+class="back-btn"
+onclick="goHome()">
+
+← กลับหน้าหลัก
+
+</button>
+
+<h2 class="product-title">
+สินค้า
+</h2>
+
+<p 
+class="price"
+id="priceText">
+
+0 บาท
+
+</p>
+
+<!-- ⭐ เพิ่มคำอธิบายสินค้า -->
+
+<p 
+id="productDescription"
+class="product-description">
+
+รายละเอียดสินค้า
+
+</p>
+
+<hr>
+
+<!-- จำนวน -->
+
+<div class="qty-box">
+
+<button onclick="minus()">-</button>
+
+<input id="qty" value="1">
+
+<button onclick="plus()">+</button>
+
+</div>
+
+<!-- ปุ่ม -->
+
+<button 
+class="cart-btn"
+onclick="addToCart()">
+
+🛒 เพิ่มลงตะกร้า
+
+</button>
+
+<button 
+class="buy-btn"
+onclick="buyNow()">
+
+⚡ ซื้อเลย
+
+</button>
+
+</div>
+
+</div>
+
+
+<script src="script.js"></script>
+
+
+<script>
+
+/* =========================
+   โหลดสินค้า
+========================= */
+const productData =
+JSON.parse(
+localStorage.getItem("product")
+);
+
+if(productData){
+
+/* ชื่อ */
+
+document.querySelector(".product-title").innerText =
+productData.name;
+
+/* ราคา */
+
+document.getElementById("priceText").innerText =
+productData.price.toLocaleString() + " บาท";
+
+
+/* ======================
+   ⭐ คำอธิบายสินค้า
+====================== */
+
+let desc = "";
+
+switch(productData.category){
+
+case "Mainboard":
+desc =
+"เมนบอร์ดคุณภาพสูง รองรับการอัปเกรดและใช้งานได้เสถียร เหมาะสำหรับคอมทั่วไปและเกมมิ่ง";
+break;
+
+case "RAM":
+desc =
+"แรมประสิทธิภาพสูง เพิ่มความเร็วในการทำงานของคอมพิวเตอร์ เหมาะสำหรับงานและเกม";
+break;
+
+case "CPU":
+desc =
+"ซีพียูประสิทธิภาพสูง รองรับงานหนัก เล่นเกม และมัลติทาสก์ได้อย่างลื่นไหล";
+break;
+
+case "GPU":
+desc =
+"การ์ดจอสำหรับเล่นเกมและงานกราฟิก ให้ภาพสวย คมชัด และประสิทธิภาพสูง";
+break;
+
+case "PowerSupply":
+desc =
+"พาวเวอร์ซัพพลายคุณภาพสูง จ่ายไฟเสถียร ปลอดภัยต่ออุปกรณ์ภายในเครื่อง";
+break;
+
+case "Case":
+desc =
+"เคสคอมดีไซน์สวย รองรับการระบายความร้อนและติดตั้งอุปกรณ์ได้ง่าย";
+break;
+
+case "HDD":
+desc =
+"อุปกรณ์จัดเก็บข้อมูล ใช้งานง่าย เหมาะสำหรับเก็บไฟล์และข้อมูลสำคัญ";
+break;
+
+case "laptop":
+desc =
+"โน๊ตบุ๊คประสิทธิภาพสูง เหมาะสำหรับทำงาน เล่นเกม และใช้งานทั่วไป";
+break;
+
+case "pc":
+desc =
+"คอมพิวเตอร์ตั้งโต๊ะ พร้อมใช้งาน เหมาะสำหรับสำนักงานและงานทั่วไป";
+break;
+
+case "printer":
+desc =
+"เครื่องพิมพ์คุณภาพสูง ใช้งานง่าย เหมาะสำหรับบ้านและสำนักงาน";
+break;
+
+case "monitor":
+desc =
+"จอภาพคมชัด สีสวย เหมาะสำหรับทำงาน ดูหนัง และเล่นเกม";
+break;
+
+case "console":
+desc =
+"เครื่องเล่นเกมประสิทธิภาพสูง รองรับเกมใหม่ เล่นได้ลื่นไหล";
+break;
+
+case "tablet":
+desc =
+"แท็บเล็ตใช้งานสะดวก เหมาะสำหรับเรียน ทำงาน และความบันเทิง";
+break;
+
+default:
+desc =
+"สินค้าคุณภาพดี เหมาะสำหรับการใช้งานทั่วไป";
+
+}
+
+document.getElementById("productDescription")
+.innerText = desc;
+
+
+/* ======================
+   รองรับหลายรูป
+====================== */
+
+let images = [];
+
+if(productData.images){
+
+images = productData.images;
+
+}
+
+else if(productData.image){
+
+images = [productData.image];
+
+}
+
+document.getElementById("mainImage").src =
+images[0];
+
+const thumbRow =
+document.getElementById("thumbnailRow");
+
+thumbRow.innerHTML = "";
+
+images.forEach(img=>{
+
+thumbRow.innerHTML += `
+
+<img 
+src="${img}"
+onclick="changeImage(this)">
+
+`;
+
+});
+
+}
+
+
+/* ========================= */
+
+function goHome(){
+
+window.location.href =
+"index.html";
+
+}
+
+/* ========================= */
+
+function changeImage(img){
+
+document.getElementById("mainImage").src =
+img.src;
+
+}
+
+/* ========================= */
+
+function plus(){
+
+let qty =
+document.getElementById("qty");
+
+qty.value =
+parseInt(qty.value) + 1;
+
+}
+
+function minus(){
+
+let qty =
+document.getElementById("qty");
+
+if(qty.value > 1){
+
+qty.value =
+parseInt(qty.value) - 1;
+
+}
+
+}
+
+/* ========================= */
+
+function addToCart(){
+
+if(!productData) return;
+
+let qty =
+parseInt(
+document.getElementById("qty").value
+);
+
+let cart =
+JSON.parse(
+localStorage.getItem("cart")
+) || [];
+
+let exist =
+cart.find(
+item => item.id === productData.id
+);
+
+if(exist){
+
+exist.qty += qty;
+
+}else{
+
+cart.push({
+
+id: productData.id,
+name: productData.name,
+price: productData.price,
+image: productData.images 
+? productData.images[0]
+: productData.image,
+
+qty: qty
+
+});
+
+}
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+alert("เพิ่มลงตะกร้าแล้ว 🛒");
+
+window.location.href =
+"index.html";
+
+}
+
+/* ========================= */
+
+function buyNow(){
+
+if(!productData) return;
+
+let qty =
+parseInt(
+document.getElementById("qty").value
+);
+
+let cart =
+JSON.parse(
+localStorage.getItem("cart")
+) || [];
+
+cart.push({
+
+id: productData.id,
+name: productData.name,
+price: productData.price,
+image: productData.images 
+? productData.images[0]
+: productData.image,
+
+qty: qty
+
+});
+
+localStorage.setItem(
+"cart",
+JSON.stringify(cart)
+);
+
+window.location.href =
+"cart.html";
+
+}
+
+</script>
+
+</body>
+</html>
