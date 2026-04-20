@@ -1,0 +1,822 @@
+/* ===================== */
+/* THEME COLOR */
+/* ===================== */
+
+:root {
+
+--brown-dark: #5a2d0c;
+--brown: #7a3e14;
+--brown-light: #a0522d;
+
+--maroon: #800020;
+--maroon-dark: #5c0018;
+
+--gradient-main:
+linear-gradient(
+to right,
+#7a3e14,
+#800020
+);
+
+--gradient-hover:
+linear-gradient(
+to right,
+#a0522d,
+#5c0018
+);
+
+}
+
+/* ===================== */
+/* RESET */
+/* ===================== */
+
+* {
+box-sizing: border-box;
+}
+
+body {
+
+margin: 0;
+
+font-family: Arial, sans-serif;
+
+background: #f3f0ed;
+
+}
+
+/* ===================== */
+/* TOP BAR */
+/* ===================== */
+
+.topbar {
+
+background: var(--gradient-main);
+
+color: white;
+
+text-align: center;
+
+padding: 6px;
+
+font-size: 14px;
+
+}
+
+/* ===================== */
+/* NAVBAR */
+/* ===================== */
+
+.navbar {
+
+display: flex;
+
+justify-content: space-between;
+
+align-items: center;
+
+padding: 12px 20px;
+
+border-bottom: 1px solid #ddd;
+
+background: white;
+
+flex-wrap: wrap;
+
+box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+
+}
+
+.logo {
+
+color: var(--maroon);
+
+font-weight: bold;
+
+font-size: 22px;
+
+}
+
+.search {
+
+width: 50%;
+
+padding: 8px;
+
+border: 1px solid #ccc;
+
+border-radius: 8px;
+
+}
+
+/* ========================= */
+/* USER BOX */
+/* ========================= */
+
+.user-box {
+
+display: flex;
+
+align-items: center;
+
+gap: 10px;
+
+}
+
+.login-btn {
+
+display: flex;
+
+align-items: center;
+
+gap: 5px;
+
+padding: 6px 12px;
+
+background: #f3f4f6;
+
+border-radius: 10px;
+
+text-decoration: none;
+
+color: black;
+
+font-size: 14px;
+
+transition: 0.2s;
+
+}
+
+.login-btn:hover {
+
+background: #e5e7eb;
+
+}
+
+.logout-btn {
+
+padding: 6px 12px;
+
+background: var(--maroon);
+
+color: white;
+
+border: none;
+
+border-radius: 8px;
+
+cursor: pointer;
+
+font-size: 13px;
+
+display: none;
+
+}
+
+.navbar .cart-btn {
+
+font-size: 20px;
+
+padding: 6px 10px;
+
+border-radius: 10px;
+
+background: #f3f4f6;
+
+text-decoration: none;
+
+}
+
+/* ===================== */
+/* UNIVERSITY LOGO */
+/* ===================== */
+
+.uni-logo {
+
+height: 36px;
+
+width: auto;
+
+object-fit: contain;
+
+margin-right: 6px;
+
+}
+
+/* ===================== */
+/* MENU */
+/* ===================== */
+
+.menu {
+
+display: flex;
+
+gap: 20px;
+
+padding: 10px 20px;
+
+background: #f5f5f5;
+
+border-bottom: 1px solid #ddd;
+
+overflow-x: auto;
+
+white-space: nowrap;
+
+}
+
+.menu a {
+
+text-decoration: none;
+
+color: black;
+
+font-size: 14px;
+
+}
+
+.menu a:hover {
+
+color: var(--maroon);
+
+}
+
+/* ===================== */
+/* LAYOUT */
+/* ===================== */
+
+.main {
+
+display: flex;
+
+}
+
+/* ===================== */
+/* SIDEBAR */
+/* ===================== */
+
+.sidebar {
+
+width: 240px;
+
+padding: 20px 16px;
+
+background: white;
+
+border-right: 1px solid #eee;
+
+box-shadow: 2px 0 10px rgba(0,0,0,0.05);
+
+}
+
+.sidebar h3 {
+
+font-size: 18px;
+
+font-weight: bold;
+
+margin-bottom: 12px;
+
+color: #111;
+
+}
+
+.sidebar h4 {
+
+font-size: 15px;
+
+font-weight: bold;
+
+margin: 20px 0 12px;
+
+color: #444;
+
+}
+
+/* ===================== */
+/* CATEGORY BUTTON */
+/* ===================== */
+
+.sidebar button {
+
+width: 100%;
+
+padding: 12px 14px;
+
+margin-bottom: 10px;
+
+background: var(--gradient-main);
+
+color: white;
+
+border: none;
+
+border-radius: 12px;
+
+font-size: 14px;
+
+cursor: pointer;
+
+transition: 0.25s;
+
+box-shadow: 0 4px 12px rgba(0,0,0,0.2);
+
+}
+
+.sidebar button:hover {
+
+background: var(--gradient-hover);
+
+transform: translateY(-2px);
+
+}
+
+.sidebar button:active {
+
+transform: scale(0.97);
+
+}
+
+.sidebar button.active {
+
+background:
+linear-gradient(
+to right,
+#5a2d0c,
+#5c0018
+);
+
+}
+
+/* ===================== */
+/* PRODUCT GRID */
+/* ===================== */
+
+#products {
+
+flex: 1;
+
+display: grid;
+
+grid-template-columns: repeat(3, 1fr);
+
+gap: 22px;
+
+padding: 20px;
+
+}
+
+/* ===================== */
+/* CARD */
+/* ===================== */
+
+.card {
+
+border: none;
+
+padding: 14px;
+
+background: white;
+
+text-align: center;
+
+border-radius: 14px;
+
+transition: 0.25s;
+
+box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+
+}
+
+.card:hover {
+
+transform: translateY(-6px);
+
+box-shadow: 0 12px 28px rgba(0,0,0,0.15);
+
+}
+
+.product-img {
+
+width: 100%;
+
+height: 180px;
+
+object-fit: contain;
+
+margin-bottom: 10px;
+
+}
+
+.card h3 {
+
+font-size: 16px;
+
+margin: 10px 0;
+
+}
+
+.price {
+
+color: var(--maroon);
+
+font-weight: bold;
+
+font-size: 18px;
+
+}
+
+.card button {
+
+background: var(--gradient-main);
+
+border: none;
+
+padding: 10px;
+
+width: 100%;
+
+cursor: pointer;
+
+color: white;
+
+font-weight: bold;
+
+border-radius: 10px;
+
+transition: 0.2s;
+
+}
+
+.card button:hover {
+
+background: var(--gradient-hover);
+
+}
+
+/* ===================== */
+/* PRODUCT PAGE */
+/* ===================== */
+
+.product-page {
+
+max-width:1200px;
+
+margin:30px auto;
+
+display:flex;
+
+gap:50px;
+
+padding:30px;
+
+background:white;
+
+border-radius:16px;
+
+box-shadow:0 8px 24px rgba(0,0,0,0.1);
+
+flex-wrap:wrap;
+
+}
+
+.product-images {
+
+flex:1;
+
+min-width:320px;
+
+}
+
+.main-image {
+
+width:100%;
+
+height:420px;
+
+object-fit:contain;
+
+background:#f7f7f7;
+
+border-radius:14px;
+
+padding:20px;
+
+}
+
+/* ===================== */
+/* BUTTONS */
+/* ===================== */
+
+.cart-btn {
+
+width:100%;
+
+padding:12px;
+
+background: var(--gradient-main);
+
+border:none;
+
+color:white;
+
+font-weight:bold;
+
+font-size:16px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+margin-bottom:10px;
+
+transition:0.2s;
+
+}
+
+.cart-btn:hover {
+
+background: var(--gradient-hover);
+
+}
+
+.buy-btn {
+
+width:100%;
+
+padding:12px;
+
+background:
+linear-gradient(
+to right,
+#5a2d0c,
+#800020
+);
+
+border:none;
+
+color:white;
+
+font-weight:bold;
+
+font-size:16px;
+
+border-radius:12px;
+
+cursor:pointer;
+
+transition:0.2s;
+
+}
+
+.buy-btn:hover {
+
+background:
+linear-gradient(
+to right,
+#a0522d,
+#5c0018
+);
+
+}
+
+/* ===================== */
+/* LOGIN PAGE */
+/* ===================== */
+
+.login-page {
+
+height: 100vh;
+
+display: flex;
+
+justify-content: center;
+
+align-items: center;
+
+background: linear-gradient(
+135deg,
+#5a2d0c,
+#800020
+);
+
+}
+
+.login-container {
+
+background: white;
+
+padding: 40px 35px;
+
+border-radius: 18px;
+
+width: 360px;
+
+text-align: center;
+
+box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+
+animation: fadeIn 0.5s ease;
+
+}
+
+.login-container h1 {
+
+margin-bottom: 5px;
+
+font-size: 26px;
+
+font-weight: bold;
+
+background: var(--gradient-main);
+
+-webkit-background-clip: text;
+
+-webkit-text-fill-color: transparent;
+
+}
+
+.login-container p {
+
+font-size: 14px;
+
+color: #666;
+
+margin-bottom: 20px;
+
+}
+
+.login-container input {
+
+width: 100%;
+
+padding: 12px;
+
+margin-bottom: 14px;
+
+border-radius: 10px;
+
+border: 1px solid #ccc;
+
+font-size: 14px;
+
+transition: 0.2s;
+
+}
+
+.login-container input:focus {
+
+border-color: var(--maroon);
+
+outline: none;
+
+box-shadow: 0 0 6px rgba(128,0,32,0.4);
+
+}
+
+.login-container button {
+
+width: 100%;
+
+padding: 12px;
+
+background: var(--gradient-main);
+
+border: none;
+
+border-radius: 12px;
+
+color: white;
+
+font-weight: bold;
+
+font-size: 15px;
+
+cursor: pointer;
+
+transition: 0.25s;
+
+}
+
+.login-container button:hover {
+
+background: var(--gradient-hover);
+
+transform: translateY(-2px);
+
+}
+
+@keyframes fadeIn {
+
+from {
+
+opacity: 0;
+
+transform: translateY(20px);
+
+}
+
+to {
+
+opacity: 1;
+
+transform: translateY(0);
+
+}
+
+}
+
+/* ===================== */
+/* REGISTER / LOGIN FORM EXTRA */
+/* ===================== */
+
+.form-title {
+
+font-size: 26px;
+
+font-weight: bold;
+
+margin-bottom: 5px;
+
+/* gradient ตัวหนังสือ */
+
+background: var(--gradient-main);
+
+-webkit-background-clip: text;
+
+-webkit-text-fill-color: transparent;
+
+}
+
+
+.form-subtitle {
+
+font-size: 15px;
+
+color: var(--maroon);
+
+font-weight: bold;
+
+margin-bottom: 20px;
+
+}
+
+
+/* ปุ่มธีม */
+
+.theme-btn {
+
+width: 100%;
+
+padding: 12px;
+
+background: var(--gradient-main);
+
+border: none;
+
+border-radius: 12px;
+
+color: white;
+
+font-weight: bold;
+
+font-size: 15px;
+
+cursor: pointer;
+
+transition: 0.25s;
+
+}
+
+.theme-btn:hover {
+
+background: var(--gradient-hover);
+
+transform: translateY(-2px);
+
+}
+
+
+.form-link {
+
+margin-top: 15px;
+
+font-size: 13px;
+
+}
+
+.form-link a {
+
+color: var(--maroon);
+
+font-weight: bold;
+
+text-decoration: none;
+
+}
+
+.form-link a:hover {
+
+text-decoration: underline;
+
+}
